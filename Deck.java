@@ -66,8 +66,8 @@ public class Deck {
         int lowestIndex = low;
 
         for (int i = low + 1; i < high + 1; i++) {
-            System.out.println("Comparing " + this.cards[lowestIndex] + " and " + this.cards[i]);
-            System.out.println(" and the result is " + this.cards[lowestIndex].compareTo(this.cards[i]));
+            //System.out.println("Comparing " + this.cards[lowestIndex] + " and " + this.cards[i]);
+            //System.out.println(" and the result is " + this.cards[lowestIndex].compareTo(this.cards[i]));
             if (this.cards[lowestIndex].compareTo(this.cards[i]) > 0) {
                 lowestIndex = i;
             }
@@ -100,9 +100,9 @@ public class Deck {
             // swap the ith card and the lowest card found
         //}
         for (int i = 0; i < this.cards.length; i++) {
-            System.out.println("i = " + i);
+            //System.out.println("i = " + i);
             int lowestCard = indexLowest(i, this.cards.length - 1);
-            System.out.println("lowest card " + lowestCard);
+            //System.out.println("lowest card " + lowestCard);
             swapCards(i, lowestCard);
         }
     }
@@ -160,15 +160,16 @@ public class Deck {
 
     public static void main(String[] args) {
         Deck deck = new Deck();
-        //deck.print();
+        deck.print();
         //System.out.println(deck.randomInt(0, 5));
         System.out.println("------------");
         //deck.swapCards(1, 10);
         //deck.print();
         deck.shuffle();
-        System.out.println(deck.indexLowest(1,5));
-        // deck.print();
-        //deck.selectionSort();
-        // deck.print();
+        //System.out.println(deck.indexLowest(1,5));
+        deck.print();
+        System.out.println("------------");
+        deck.selectionSort();
+        deck.print();
     }
 }
