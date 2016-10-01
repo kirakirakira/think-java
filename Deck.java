@@ -63,14 +63,48 @@ public class Deck {
     }
 
     public int indexLowest(int low, int high) {
-        return 0;
+        int lowestIndex = low;
+
+        for (int i = low + 1; i < high + 1; i++) {
+            System.out.println("Comparing " + this.cards[lowestIndex] + " and " + this.cards[i]);
+            System.out.println(" and the result is " + this.cards[lowestIndex].compareTo(this.cards[i]));
+            if (this.cards[lowestIndex].compareTo(this.cards[i]) > 0) {
+                lowestIndex = i;
+            }
+        }
+        return lowestIndex;
     }
+
+    //     int lowestIndex = -1;
+    //
+    //     if (low == high) {
+    //         lowestIndex = low;
+    //     }
+    //
+    //     for (int i = low; i < high; i++) {
+    //         System.out.println("Comparing " + this.cards[low] + " and " + this.cards[i+1]);
+    //         System.out.println(" and the result is " + this.cards[low].compareTo(this.cards[i+1]));
+    //         if (this.cards[low].compareTo(this.cards[i+1]) > 0) {
+    //             lowestIndex = i + 1;
+    //         }
+    //         else {
+    //             lowestIndex = low;
+    //         }
+    //     }
+    //     return lowestIndex;
+    // }
 
     public void selectionSort() {
         //for each index i {
             // find the lowest card at or to the right of i
             // swap the ith card and the lowest card found
         //}
+        for (int i = 0; i < this.cards.length; i++) {
+            System.out.println("i = " + i);
+            int lowestCard = indexLowest(i, this.cards.length - 1);
+            System.out.println("lowest card " + lowestCard);
+            swapCards(i, lowestCard);
+        }
     }
 
     public Deck subdeck(int low, int high) {
@@ -132,6 +166,9 @@ public class Deck {
         //deck.swapCards(1, 10);
         //deck.print();
         deck.shuffle();
-        deck.print();
+        System.out.println(deck.indexLowest(1,5));
+        // deck.print();
+        //deck.selectionSort();
+        // deck.print();
     }
 }

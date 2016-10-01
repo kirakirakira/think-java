@@ -29,6 +29,9 @@ public class Card {
     }
 
   public int compareTo(Card that) {
+    // System.out.println("first card suit " + this.suit + " rank " + this.rank);
+    // System.out.println("second card suit " + that.suit + " rank " + that.rank);
+
     if (this.suit < that.suit) {
       return -1;
     }
