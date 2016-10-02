@@ -117,24 +117,53 @@ public class Deck {
 
     public static Deck merge(Deck d1, Deck d2) {
         // create a new deck big enough for all the cards
-
+        Deck newDeck = new Deck(d1.cards.length+d2.cards.length);
+        System.out.println(d1.cards.length);
+        System.out.println(d2.cards.length);
         // use the index i to keep track of where we are at in
         // the first deck, and the index j for the second deck
         int i = 0;
         int j = 0;
 
         // the index k traverses the result deck
-        //for (int k = 0; k < result.cards.length; k++) {
+        for (int k = 0; k < newDeck.cards.length; k++) {
+            // System.out.println("k is " + k);
+            // System.out.println("i is " + i);
+            // System.out.println("j is " + j);
 
             // if d1 is empty, d2 wins
+            if (i == d1.cards.length) {
+                newDeck.cards[k] = d2.cards[j];
+            }
             // if d2 is empty, d1 wins
-            // otherwise, compare the two cards
+            else if (j == d2.cards.length) {
+                newDeck.cards[k] = d1.cards[i];
+            }
 
+            // otherwise, compare the two cards
+            else {
+                int comparison = d1.cards[i].compareTo(d2.cards[j]);
+                // System.out.println("d1 card at i " + d1.cards[i]);
+                // System.out.println("d2 card at j " + d2.cards[j]);
+                // System.out.println("comparison is equal to " + comparison);
+                if (comparison == 1) {
+                    newDeck.cards[k] = d2.cards[j];
+                    // System.out.println("so now new deck at k is " + newDeck.cards[k]);
+                    j += 1;
+                    // System.out.println("and i is incremented to " + i);
+                }
+                else {
+                    newDeck.cards[k] = d1.cards[i];
+                    // System.out.println("so now new deck at k is " + newDeck.cards[k]);
+                    i += 1;
+                    // System.out.println("and j is incremented to " + j);
+                }
+            }
             // add the winner to the new deck at position k
             // increment either i or j
-        //}
+        }
         // return the  new deck
-        return null;
+        return newDeck;
     }
 
     public Deck almostMergeSort() {
@@ -159,17 +188,41 @@ public class Deck {
     }
 
     public static void main(String[] args) {
+        // Deck deck = new Deck();
+        // deck.print();
+        // //System.out.println(deck.randomInt(0, 5));
+        // System.out.println("------------");
+        // //deck.swapCards(1, 10);
+        // //deck.print();
+        // deck.shuffle();
+        // //System.out.println(deck.indexLowest(1,5));
+        // deck.print();
+        // System.out.println("------------");
+        // deck.selectionSort();
+        // deck.print();
+
+        // test merge:
+        // build a deck
         Deck deck = new Deck();
-        deck.print();
-        //System.out.println(deck.randomInt(0, 5));
-        System.out.println("------------");
-        //deck.swapCards(1, 10);
-        //deck.print();
+        // shuffle the deck
         deck.shuffle();
-        //System.out.println(deck.indexLowest(1,5));
-        deck.print();
-        System.out.println("------------");
-        deck.selectionSort();
-        deck.print();
+        // use subdeck and form two small subdecks
+        Deck deck_1 = deck.subdeck(0,26);
+        Deck deck_2 = deck.subdeck(27,51);
+        // use selection sort to sort each deck
+        deck_1.selectionSort();
+        System.out.println("printing deck 1 after it was sorted --");
+        deck_1.print();
+
+        deck_2.selectionSort();
+        System.out.println("printing deck 2 after it was sorted --");
+        deck_2.print();
+        // merge the two subdecks together
+
+        Deck deckMerged = merge(deck_1, deck_2);
+        System.out.println("printing the merged deck --");
+        deckMerged.print();
+
+
     }
 }
