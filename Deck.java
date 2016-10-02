@@ -140,32 +140,27 @@ public class Deck {
         return newDeck;
     }
 
-    public Deck almostMergeSort() {
+    public static Deck almostMergeSort(Deck deck) {
         // divide the deck into two subdecks
         // sort the subdecks using selectionSort
         // merge the two halves and return the result
         // not recursive
 
-        // // use subdeck and form two small subdecks
-        // Deck deck_1 = this.cards.subdeck(0,26);
-        // Deck deck_2 = this.cards.subdeck(27,51);
-        // // use selection sort to sort each deck
-        // deck_1.selectionSort();
-        // System.out.println("printing deck 1 after it was sorted --");
-        // deck_1.print();
-        //
-        // deck_2.selectionSort();
-        // System.out.println("printing deck 2 after it was sorted --");
-        // deck_2.print();
-        // // merge the two subdecks together
-        //
-        // Deck deckMerged = merge(deck_1, deck_2);
-        // System.out.println("printing the merged deck --");
-        // deckMerged.print();
-        return null;
+        // use subdeck and form two small subdecks
+        System.out.println(deck.cards.length/2);
+        Deck deck_1 = deck.subdeck(0, deck.cards.length/2);
+        Deck deck_2 = deck.subdeck(deck.cards.length/2 + 1, deck.cards.length - 1);
+        // use selection sort to sort each deck
+        deck_1.selectionSort();
+        deck_2.selectionSort();
+
+        // merge the two subdecks together
+        Deck deckMerged = merge(deck_1, deck_2);
+
+        return deckMerged;
     }
 
-    public Deck mergeSort() {
+    public static Deck mergeSort(Deck deck) {
         // if the deck is 0 or 1 cards, return it
         // divide the deck into two subdecks
         // sort the subdecks using mergeSort
@@ -192,26 +187,34 @@ public class Deck {
         // deck.selectionSort();
         // deck.print();
 
-        // test merge:
+        // // test merge:
+        // // build a deck
+        // Deck deck = new Deck();
+        // // shuffle the deck
+        // deck.shuffle();
+        // // use subdeck and form two small subdecks
+        // Deck deck_1 = deck.subdeck(0,26);
+        // Deck deck_2 = deck.subdeck(27,51);
+        // // use selection sort to sort each deck
+        // deck_1.selectionSort();
+        // System.out.println("printing deck 1 after it was sorted --");
+        // deck_1.print();
+        //
+        // deck_2.selectionSort();
+        // System.out.println("printing deck 2 after it was sorted --");
+        // deck_2.print();
+        // // merge the two subdecks together
+        //
+        // Deck deckMerged = merge(deck_1, deck_2);
+        // System.out.println("printing the merged deck --");
+        // deckMerged.print();
+
+        // test almostMergeSort:
         // build a deck
         Deck deck = new Deck();
         // shuffle the deck
         deck.shuffle();
-        // use subdeck and form two small subdecks
-        Deck deck_1 = deck.subdeck(0,26);
-        Deck deck_2 = deck.subdeck(27,51);
-        // use selection sort to sort each deck
-        deck_1.selectionSort();
-        System.out.println("printing deck 1 after it was sorted --");
-        deck_1.print();
-
-        deck_2.selectionSort();
-        System.out.println("printing deck 2 after it was sorted --");
-        deck_2.print();
-        // merge the two subdecks together
-
-        Deck deckMerged = merge(deck_1, deck_2);
-        System.out.println("printing the merged deck --");
+        Deck deckMerged = almostMergeSort(deck);
         deckMerged.print();
 
 
