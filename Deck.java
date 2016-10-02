@@ -184,7 +184,15 @@ public class Deck {
     }
 
     public void insertionSort() {
-
+        // https://en.wikipedia.org/wiki/Insertion_sort
+        // for i = 1 to length(A) - 1
+        for (int i = 1; i < this.cards.length; i++) {
+            int j = i;
+            while ((j > 0) && (this.cards[j-1].compareTo(this.cards[j]) > 0)) {
+                swapCards(j, j-1);
+                j--;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -228,8 +236,10 @@ public class Deck {
         Deck deck = new Deck();
         // shuffle the deck
         deck.shuffle();
-        Deck deckMerged = mergeSort(deck);
-        deckMerged.print();
+        // Deck deckMerged = mergeSort(deck);
+        // deckMerged.print();
+        deck.insertionSort();
+        deck.print();
 
 
     }
