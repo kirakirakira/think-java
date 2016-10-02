@@ -75,25 +75,6 @@ public class Deck {
         return lowestIndex;
     }
 
-    //     int lowestIndex = -1;
-    //
-    //     if (low == high) {
-    //         lowestIndex = low;
-    //     }
-    //
-    //     for (int i = low; i < high; i++) {
-    //         System.out.println("Comparing " + this.cards[low] + " and " + this.cards[i+1]);
-    //         System.out.println(" and the result is " + this.cards[low].compareTo(this.cards[i+1]));
-    //         if (this.cards[low].compareTo(this.cards[i+1]) > 0) {
-    //             lowestIndex = i + 1;
-    //         }
-    //         else {
-    //             lowestIndex = low;
-    //         }
-    //     }
-    //     return lowestIndex;
-    // }
-
     public void selectionSort() {
         //for each index i {
             // find the lowest card at or to the right of i
@@ -134,33 +115,26 @@ public class Deck {
             // if d1 is empty, d2 wins
             if (i == d1.cards.length) {
                 newDeck.cards[k] = d2.cards[j];
+                j++;
             }
             // if d2 is empty, d1 wins
             else if (j == d2.cards.length) {
                 newDeck.cards[k] = d1.cards[i];
+                i++;
             }
 
             // otherwise, compare the two cards
-            else {
-                int comparison = d1.cards[i].compareTo(d2.cards[j]);
-                // System.out.println("d1 card at i " + d1.cards[i]);
-                // System.out.println("d2 card at j " + d2.cards[j]);
-                // System.out.println("comparison is equal to " + comparison);
-                if (comparison == 1) {
-                    newDeck.cards[k] = d2.cards[j];
-                    // System.out.println("so now new deck at k is " + newDeck.cards[k]);
-                    j += 1;
-                    // System.out.println("and i is incremented to " + i);
-                }
-                else {
-                    newDeck.cards[k] = d1.cards[i];
-                    // System.out.println("so now new deck at k is " + newDeck.cards[k]);
-                    i += 1;
-                    // System.out.println("and j is incremented to " + j);
-                }
-            }
             // add the winner to the new deck at position k
             // increment either i or j
+            else if (d1.cards[i].compareTo(d2.cards[j]) == 1){
+                newDeck.cards[k] = d2.cards[j];
+                j++;
+            }
+            else {
+                newDeck.cards[k] = d1.cards[i];
+                i++;
+            }
+
         }
         // return the  new deck
         return newDeck;
@@ -170,7 +144,24 @@ public class Deck {
         // divide the deck into two subdecks
         // sort the subdecks using selectionSort
         // merge the two halves and return the result
-        // not recursive?
+        // not recursive
+
+        // // use subdeck and form two small subdecks
+        // Deck deck_1 = this.cards.subdeck(0,26);
+        // Deck deck_2 = this.cards.subdeck(27,51);
+        // // use selection sort to sort each deck
+        // deck_1.selectionSort();
+        // System.out.println("printing deck 1 after it was sorted --");
+        // deck_1.print();
+        //
+        // deck_2.selectionSort();
+        // System.out.println("printing deck 2 after it was sorted --");
+        // deck_2.print();
+        // // merge the two subdecks together
+        //
+        // Deck deckMerged = merge(deck_1, deck_2);
+        // System.out.println("printing the merged deck --");
+        // deckMerged.print();
         return null;
     }
 
