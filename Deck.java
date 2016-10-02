@@ -99,8 +99,8 @@ public class Deck {
     public static Deck merge(Deck d1, Deck d2) {
         // create a new deck big enough for all the cards
         Deck newDeck = new Deck(d1.cards.length+d2.cards.length);
-        System.out.println(d1.cards.length);
-        System.out.println(d2.cards.length);
+        // System.out.println(d1.cards.length);
+        // System.out.println(d2.cards.length);
         // use the index i to keep track of where we are at in
         // the first deck, and the index j for the second deck
         int i = 0;
@@ -147,7 +147,7 @@ public class Deck {
         // not recursive
 
         // use subdeck and form two small subdecks
-        System.out.println(deck.cards.length/2);
+        //System.out.println(deck.cards.length/2);
         Deck deck_1 = deck.subdeck(0, deck.cards.length/2);
         Deck deck_2 = deck.subdeck(deck.cards.length/2 + 1, deck.cards.length - 1);
         // use selection sort to sort each deck

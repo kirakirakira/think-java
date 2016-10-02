@@ -26,8 +26,8 @@ public class Test {
         System.out.println("Testing mergesort...");
         deck = new Deck();
         deck.shuffle();
-        deck = deck.mergeSort();
-        checkSorted(deck);
+        Deck deckMerged = deck.mergeSort(deck);
+        checkSorted(deckMerged);
 
         System.out.println("Testing insertion...");
         deck = new Deck();
