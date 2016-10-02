@@ -161,12 +161,26 @@ public class Deck {
     }
 
     public static Deck mergeSort(Deck deck) {
+        // recursive implementation
         // if the deck is 0 or 1 cards, return it
+
+        if (deck.cards.length < 2) {
+            return deck;
+        }
+
         // divide the deck into two subdecks
+        int mid = (deck.cards.length - 1)/2;
+        int max = deck.cards.length;
+        Deck deck_1 = deck.subdeck(0, mid);
+        Deck deck_2 = deck.subdeck(mid + 1, max - 1);
+
         // sort the subdecks using mergeSort
+        Deck deck_1_sorted = mergeSort(deck_1);
+        Deck deck_2_sorted = mergeSort(deck_2);
+
         // merge the two halves and return the result
-        // should be recursive
-        return null;
+        return merge(deck_1_sorted, deck_2_sorted);
+
     }
 
     public void insertionSort() {
@@ -214,7 +228,7 @@ public class Deck {
         Deck deck = new Deck();
         // shuffle the deck
         deck.shuffle();
-        Deck deckMerged = almostMergeSort(deck);
+        Deck deckMerged = mergeSort(deck);
         deckMerged.print();
 
 
